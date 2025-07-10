@@ -6,7 +6,7 @@ from .models import Letting
 # massa. Integer est nunc, pulvinar a # tempor et, bibendum id arcu. Vestibulum ante ipsum primis
 # in faucibus orci luctus et ultrices posuere cubilia curae; Cras eget scelerisque
 def index(request):
-    """Displays a list with all lettings
+    """Displays lettings list
 
     Args:
         request (HttpRequest): HTTP ovbject request

@@ -6,6 +6,14 @@ from .models import Profile
 # pulvinar eget. Fusc faucibus, urna quis auctor pharetra, massa dolor cursus neque, quis dictum
 # lacus d
 def index(request):
+    """Displays profiles list
+
+    Args:
+        request (HttpRequest): HTTP ovbject request
+
+    Returns:
+        HttpResponse: HTTP response containing profiles view
+    """
     profiles_list = Profile.objects.all()
     context = {'profiles_list': profiles_list}
     return render(request, 'profiles/index.html', context)
@@ -16,6 +24,15 @@ def index(request):
 # tristique lacus, it. Nam aliquam dignissim congue. Pellentesque habitant morbi tristique senectus
 # et netus et males
 def profile(request, username):
+    """Displays a profile details
+
+    Args:
+        request (HttpRequest): HTTP ovbject request
+        username (str): profile username
+
+    Returns:
+        HttpResponse: HTTP response containing profile view
+    """
     profile = Profile.objects.get(user__username=username)
     context = {'profile': profile}
     return render(request, 'profiles/profile.html', context)
