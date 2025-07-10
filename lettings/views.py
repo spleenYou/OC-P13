@@ -6,6 +6,14 @@ from .models import Letting
 # massa. Integer est nunc, pulvinar a # tempor et, bibendum id arcu. Vestibulum ante ipsum primis
 # in faucibus orci luctus et ultrices posuere cubilia curae; Cras eget scelerisque
 def index(request):
+    """Displays a list with all lettings
+
+    Args:
+        request (HttpRequest): HTTP ovbject request
+
+    Returns:
+        HttpResponse: HTTP response containing lettings view
+    """
     lettings_list = Letting.objects.all()
     context = {'lettings_list': lettings_list}
     return render(request, 'lettings/index.html', context)
@@ -21,6 +29,15 @@ def index(request):
 # risus. Mauris condimentum auctor elementum. Donec quis nisi ligula. Integer vehicula tincidunt
 # enim, ac lacinia augue pulvinar sit amet.
 def letting(request, letting_id):
+    """Displays a letting details
+
+    Args:
+        request (HttpRequest): HTTP ovbject request
+        letting_id (int): letting id
+
+    Returns:
+        HttpResponse: HTTP response containing letting view
+    """
     letting = Letting.objects.get(id=letting_id)
     context = {
         'title': letting.title,
