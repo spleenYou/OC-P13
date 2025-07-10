@@ -1,9 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-
+from django.conf import settings
+from django.conf.urls.static import static
 from . import views
 import lettings.views
 import profiles.views
+
 
 urlpatterns = [
     path('', views.index, name='index'),
@@ -13,3 +15,8 @@ urlpatterns = [
     path('profiles/<str:username>/', profiles.views.profile, name='profile'),
     path('admin/', admin.site.urls),
 ]
+
+urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+
+
+handler404 = views.custom_404_view
