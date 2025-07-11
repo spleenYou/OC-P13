@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Letting
+from django.http import Http404
+import logging
 
 
 # Aenean leo magna, vestibulum et tincidunt fermentum, consectetur quis velit. Sed non placerat
@@ -38,9 +40,13 @@ def letting(request, letting_id):
     Returns:
         HttpResponse: HTTP response containing letting view
     """
-    letting = Letting.objects.get(id=letting_id)
-    context = {
-        'title': letting.title,
-        'address': letting.address,
-    }
-    return render(request, 'lettings/letting.html', context)
+    try:
+        letting = Letting.objects.get(id=letting_id)
+        context = {
+            'title': letting.title,
+            'address': letting.address,
+        }
+        return render(request, 'lettings/letting.html', context)
+    except Letting.DoesNotExist as e:
+        logging.exception(f'Letting introuvable : {e}', exc_info=False)
+        raise Http404()

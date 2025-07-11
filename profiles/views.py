@@ -1,5 +1,7 @@
 from django.shortcuts import render
 from .models import Profile
+import logging
+from django.http import Http404
 
 
 # Sed placerat quam in pulvinar commodo. Nullam laoreet consectetur ex, sed consequat libero
@@ -33,6 +35,10 @@ def profile(request, username):
     Returns:
         HttpResponse: HTTP response containing profile view
     """
-    profile = Profile.objects.get(user__username=username)
-    context = {'profile': profile}
-    return render(request, 'profiles/profile.html', context)
+    try:
+        profile = Profile.objects.get(user__username=username)
+        context = {'profile': profile}
+        return render(request, 'profiles/profile.html', context)
+    except Profile.DoesNotExist as ex:
+        logging.warning(f'Profile introuvable : {ex}', exc_info=False)
+        raise Http404()
