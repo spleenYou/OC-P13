@@ -37,8 +37,9 @@ def profile(request, username):
     """
     try:
         profile = Profile.objects.get(user__username=username)
+    except Profile.DoesNotExist as ex:
+        logging.exception(f'Profile introuvable : {ex}', exc_info=False)
+        raise Http404()
+    else:
         context = {'profile': profile}
         return render(request, 'profiles/profile.html', context)
-    except Profile.DoesNotExist as ex:
-        logging.warning(f'Profile introuvable : {ex}', exc_info=False)
-        raise Http404()

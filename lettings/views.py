@@ -42,11 +42,12 @@ def letting(request, letting_id):
     """
     try:
         letting = Letting.objects.get(id=letting_id)
+    except Letting.DoesNotExist as e:
+        logging.exception(f'Letting introuvable : {e}', exc_info=False)
+        raise Http404()
+    else:
         context = {
             'title': letting.title,
             'address': letting.address,
         }
         return render(request, 'lettings/letting.html', context)
-    except Letting.DoesNotExist as e:
-        logging.exception(f'Letting introuvable : {e}', exc_info=False)
-        raise Http404()
