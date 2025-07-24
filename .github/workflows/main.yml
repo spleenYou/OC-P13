@@ -49,8 +49,8 @@ jobs:
     needs: build-push
     runs-on: ubuntu-latest
     env:
-    RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
-    RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+      RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+      RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
     steps:
       - name: Update env vars on Render
         run: |
