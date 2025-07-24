@@ -12,7 +12,7 @@ jobs:
       SERVER_TYPE: ${{ secrets.SERVER_TYPE }}
       HOSTS: ${{ secrets.HOSTS }}
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
-      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
+      SENTRY_DSN: ${{ secrets.SENTRY_DSN }}
     steps:
       - uses: actions/checkout@v3
       - name: Set up Python
