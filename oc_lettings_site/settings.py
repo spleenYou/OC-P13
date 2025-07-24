@@ -6,7 +6,7 @@ import sentry_sdk
 load_dotenv()
 
 sentry_sdk.init(
-    dsn=os.getenv('SENTRY_DSN'),
+    dsn=os.environ['SENTRY_DSN'],
     send_default_pii=True,
     _experiments={
         "enable_logs": True,
@@ -21,14 +21,14 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv('SECRET_KEY')
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-if os.getenv('SERVER_TYPE') == 'PROD':
+if os.environ['SERVER_TYPE'] == 'PROD':
     DEBUG = False
 
-ALLOWED_HOSTS = os.getenv('HOSTS').split(',')
+ALLOWED_HOSTS = os.environ['HOSTS'].split(',')
 
 
 # Application definition
