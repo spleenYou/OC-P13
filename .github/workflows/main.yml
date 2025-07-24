@@ -3,7 +3,7 @@ name: Déploiement du site Orange County Lettings
 on:
   push:
     branches:
-      - '**'
+      - master
 
 jobs:
   lint-test:
@@ -29,7 +29,6 @@ jobs:
 
   build-push:
       needs: lint-test
-      if: github.ref_name == 'master'
       runs-on: ubuntu-latest
       steps:
         - uses: actions/checkout@v3
@@ -45,3 +44,29 @@ jobs:
           run: |
             GIT_COMMIT=$(git rev-parse --short HEAD)
             docker push spleen85/oc-p13:$GIT_COMMIT
+
+  deploy:
+    needs: build-push
+    runs-on: ubuntu-latest
+    env:
+    RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+    RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+    steps:
+      - name: Update env vars on Render
+        run: |
+          curl -X PATCH "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/env-vars" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Content-Type: application/json" \
+            -d '{
+                  "envVars": [
+                    {"key": "SECRET_KEY", "value": "'"${{ secrets.SECRET_KEY }}"'"},
+                    {"key": "HOSTS", "value": "'"${{ secrets.HOSTS }}"'"}
+                    {"key": "SENTRY_DSN", "value": "'"${{ secrets.SENTRY_DSN }}"'"}
+                    {"key": "SERVER_TYPE", "value": "'"${{ secrets.SERVER_TYPE }}"'"}
+                  ]
+                }'
+      - name: Trigger deployment on Render
+        run: |
+          curl -X POST "https://api.render.com/deploy/srv-${RENDER_SERVICE_ID}" \
+            -H "Accept: application/json" \
+            -H "Authorization: Bearer $RENDER_API_KEY"
