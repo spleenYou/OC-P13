@@ -44,6 +44,9 @@ jobs:
         run: |
           GIT_COMMIT=$(git rev-parse --short HEAD)
           docker push spleen85/oc-p13:$GIT_COMMIT
+      - name: Save commit sha
+        id: vars
+        run: echo "sha=$(git rev-parse --short HEAD)" >> $GITHUB_OUTPUT
 
   deploy:
     needs: build-push
@@ -51,10 +54,10 @@ jobs:
     env:
       RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
+      GIT_COMMIT: ${{ needs.build-push.outputs.sha }}
     steps:
       - name: Déployer la nouvelle image sur Render
         run: |
-          GIT_COMMIT=$(git rev-parse --short HEAD)
           curl -X POST "https://api.render.com/deploy/srv-${RENDER_SERVICE_ID}?key=${RENDER_API_KEY}&imgURL=spleen85%2Foc-p13%3A${GIT_COMMIT}"
       - name: Update env vars on Render
         run: |
