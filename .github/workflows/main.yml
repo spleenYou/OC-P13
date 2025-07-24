@@ -25,4 +25,23 @@ jobs:
         run: flake8 .
       - name: Run tests with coverage
         run: |
-          pytest --cov-report term --cov-fail-under=80
+          pytest --cov --cov-report term --cov-fail-under=80
+
+build-push:
+    needs: lint-test
+    if: github.ref_name == 'master'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build Docker image
+        run: |
+          GIT_COMMIT=$(git rev-parse --short HEAD)
+          docker build -t spleen85/OC-P13:$GIT_COMMIT .
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - name: Push image
+        run: |
+          GIT_COMMIT=$(git rev-parse --short HEAD)
+          docker push spleen85/OC-P13:$GIT_COMMIT
