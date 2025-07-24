@@ -28,22 +28,22 @@ jobs:
           pytest --cov --cov-report term --cov-fail-under=80
 
   build-push:
-      needs: lint-test
-      runs-on: ubuntu-latest
-      steps:
-        - uses: actions/checkout@v3
-        - name: Set up Docker Buildx
-          uses: docker/setup-buildx-action@v3
-        - name: Build Docker image
-          run: |
-            GIT_COMMIT=$(git rev-parse --short HEAD)
-            docker build -t spleen85/oc-p13:$GIT_COMMIT .
-        - name: Log in to Docker Hub
-          run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
-        - name: Push image
-          run: |
-            GIT_COMMIT=$(git rev-parse --short HEAD)
-            docker push spleen85/oc-p13:$GIT_COMMIT
+    needs: lint-test
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Build Docker image
+        run: |
+          GIT_COMMIT=$(git rev-parse --short HEAD)
+          docker build -t spleen85/oc-p13:$GIT_COMMIT .
+      - name: Log in to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
+      - name: Push image
+        run: |
+          GIT_COMMIT=$(git rev-parse --short HEAD)
+          docker push spleen85/oc-p13:$GIT_COMMIT
 
   deploy:
     needs: build-push
@@ -52,6 +52,10 @@ jobs:
       RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
       RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
     steps:
+      - name: Déployer la nouvelle image sur Render
+        run: |
+          GIT_COMMIT=$(git rev-parse --short HEAD)
+          curl -X POST "https://api.render.com/deploy/srv-${RENDER_SERVICE_ID}?key=${RENDER_API_KEY}&imgURL=spleen85%2Foc-p13%3A${GIT_COMMIT}"
       - name: Update env vars on Render
         run: |
           curl -X PATCH "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/env-vars" \
