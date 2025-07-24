@@ -1,0 +1,8 @@
+.env
+.github/
+.venv/
+.pytest_cache/
+htmlcov/
+flake8-html/
+.gitignore
+.coverage
