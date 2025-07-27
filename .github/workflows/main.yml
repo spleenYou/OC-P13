@@ -81,4 +81,4 @@ jobs:
         run: echo "Commit ${GIT_COMMIT}"
       - name: Trigger deployment on Render
         run: |
-          curl "https://api.render.com/deploy/srv-d21b79mmcj7s73c4bo90?key=ObCOrT4qnps"
+          curl "${{ secrets.URL_DEPLOY_HOOK }}"
