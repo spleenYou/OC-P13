@@ -71,6 +71,4 @@ jobs:
                 }'
       - name: Trigger deployment on Render
         run: |
-          curl -X POST "https://api.render.com/deploy/srv-${RENDER_SERVICE_ID}?imgURL=spleen85%2Foc-p13%3A${GIT_COMMIT}" \
-            -H "Accept: application/json" \
-            -H "Authorization: Bearer ${RENDER_API_KEY}"
+          curl -X POST "https://api.render.com/deploy/srv-d21b79mmcj7s73c4bo90?key=ObCOrT4qnps&imgURL=spleen85%2Foc-p13%3A${GIT_COMMIT}"
