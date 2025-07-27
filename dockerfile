@@ -10,6 +10,16 @@ COPY . .
 
 RUN mkdir -p /app/staticfiles
 
+ARG SENTRY_DSN=""
+ARG SECRET_KEY="dummy-key-for-build"
+ARG SERVER_TYPE="DEV"
+ARG HOSTS="localhost"
+
+ENV SENTRY_DSN=$SENTRY_DSN
+ENV SECRET_KEY=$SECRET_KEY
+ENV SERVER_TYPE=$SERVER_TYPE
+ENV HOSTS=$HOSTS
+
 RUN python manage.py collectstatic --noinput
 
 EXPOSE 8000
