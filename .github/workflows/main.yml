@@ -62,7 +62,7 @@ jobs:
       - name: Update env vars on Render
         run: |
           curl -X PATCH "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/env-vars" \
-            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Authorization: Bearer ${RENDER_API_KEY}" \
             -H "Content-Type: application/json" \
             -d '{
                   "envVars": [
@@ -76,4 +76,4 @@ jobs:
         run: |
           curl -X POST "https://api.render.com/deploy/srv-${RENDER_SERVICE_ID}" \
             -H "Accept: application/json" \
-            -H "Authorization: Bearer $RENDER_API_KEY"
+            -H "Authorization: Bearer ${RENDER_API_KEY}"
