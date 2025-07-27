@@ -39,7 +39,7 @@ jobs:
       - name: Build Docker image
         run: |
           GIT_COMMIT=$(git rev-parse --short HEAD)
-          docker build -t spleen85/oc-p13:$GIT_COMMIT .
+          docker build -t spleen85/oc-p13:$GIT_COMMIT -t spleen85/oc-p13:latest .
       - name: Log in to Docker Hub
         run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u ${{ secrets.DOCKERHUB_USERNAME }} --password-stdin
       - name: Push image
