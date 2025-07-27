@@ -75,4 +75,6 @@ jobs:
         run: echo "Commit ${GIT_COMMIT}"
       - name: Trigger deployment on Render
         run: |
-          curl -X POST "https://api.render.com/deploy/srv-d21b79mmcj7s73c4bo90?key=ObCOrT4qnps&imgURL=spleen85%2Foc-p13%3A${GIT_COMMIT}"
+          curl -X POST \
+            --data-urlencode "imgURL=spleen85/oc-p13:${GIT_COMMIT}" \
+            "https://api.render.com/deploy/srv-d21b79mmcj7s73c4bo90?key=ObCOrT4qnps"
