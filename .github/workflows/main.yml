@@ -71,7 +71,8 @@ jobs:
                     {"key": "SERVER_TYPE", "value": "'"${{ secrets.SERVER_TYPE }}"'"}
                   ]
                 }'
+      - name: display commit git
+        run: echo "Commit ${GIT_COMMIT}"
       - name: Trigger deployment on Render
         run: |
-          echo "docker.io%2Fspleen85%2Foc-p13%3A${GIT_COMMIT}" |
           curl -X POST "https://api.render.com/deploy/srv-d21b79mmcj7s73c4bo90?key=ObCOrT4qnps&imgURL=docker.io%2Fspleen85%2Foc-p13%3A${GIT_COMMIT}"
