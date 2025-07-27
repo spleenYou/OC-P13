@@ -1,7 +1,7 @@
 from django.contrib import admin
-from django.urls import path
 from django.conf import settings
-from django.conf.urls.static import static
+from django.urls import path, re_path
+from django.views.static import serve
 from . import views
 import lettings.views
 import profiles.views
@@ -16,4 +16,9 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 ]
 
-urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+if not settings.DEBUG:
+    urlpatterns += [
+        re_path(r'^static/(?P<path>.*)$', serve, {
+            'document_root': settings.STATIC_ROOT,
+        }),
+    ]
