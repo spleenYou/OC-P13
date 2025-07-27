@@ -1,7 +1,5 @@
 from django.contrib import admin
-from django.conf import settings
-from django.urls import path, re_path
-from django.views.static import serve
+from django.urls import path
 from . import views
 import lettings.views
 import profiles.views
@@ -15,10 +13,3 @@ urlpatterns = [
     path('profiles/<str:username>/', profiles.views.profile, name='profile'),
     path('admin/', admin.site.urls),
 ]
-
-if not settings.DEBUG:
-    urlpatterns += [
-        re_path(r'^static/(?P<path>.*)$', serve, {
-            'document_root': settings.STATIC_ROOT,
-        }),
-    ]
