@@ -75,5 +75,5 @@ jobs:
         run: echo "Commit ${GIT_COMMIT}"
       - name: Trigger deployment on Render
         run: |
-          ENCODED_IMAGE_URL=$(printf '%s' "spleen85/oc-p13:${GIT_COMMIT}" | jq -sRr @uri)
-          curl -X POST "https://api.render.com/deploy/srv-d21b79mmcj7s73c4bo90?key=ObCOrT4qnps&imgURL=${ENCODED_IMAGE_URL}"
+          curl -X POST "https://api.render.com/deploy/srv-d21b79mmcj7s73c4bo90?key=ObCOrT4qnps&imgURL=docker.io/spleen85/oc-p13:${GIT_COMMIT}" \
+          -H "Content-Type: application/json"
