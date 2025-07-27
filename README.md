@@ -34,21 +34,18 @@ Dans le reste de la documentation sur le développement local, il est supposé q
 
 #### Variable d'environnement
 
-Pour fonctionner, un fichier contenant des variables d'environnement est nécéssaire.
+Pour fonctionner, des variables d'environnement sont nécéssaires.
 
 - `cd /path/to/OC-P13`
-- `nano .env`
-- Ecrire les variables suivantes :
+- `export SERVER_TYPE=TEST`
+- `export HOSTS=127.0.0.1,localhost`
+- `export SECRET_KEY=SECRET_KEY_EXAMPLE`
+- `export SENTRY_DSN=https://517a76dae9a195009...3e6f03e@o450...7232.ingest.de.sentry.io/4509...2160`
+- Description des variables :
   - SERVER_TYPE -> TEST ou PROD selon le type de serveur.
-  - HOSTS -> Si vous êtes sur un serveur en production, indiquer les adresses de votre serveur entre guillements et séparés par une virgule.
+  - HOSTS -> adresses de votre serveur séparés par une virgule.
   - SECRET_KEY -> Clé secrète pour la cryptographie de Django.
   - SENTRY_DSN -> le DSN donné par Sentry pour le suivi des logs.
-
-Exemple de fichier .env : \
-SERVER_TYPE=TEST \
-HOSTS='127.0.0.1,localhost' \
-SECRET_KEY=New_secret_key_de_folie#@=&4%=hp46(s \
-SENTRY_DSN=https://517a76dae9a195---------------03e@o4509--------7232.ingest.de.sentry.io/4509---------160
 
 #### Exécuter le site
 
@@ -93,3 +90,13 @@ Utilisation de PowerShell, comme ci-dessus sauf :
 
 - Pour activer l'environnement virtuel, `.\venv\Scripts\Activate.ps1` 
 - Remplacer `which <my-command>` par `(Get-Command <my-command>).Path`
+
+### Image Docker
+
+Une image Docker est disponible pour des tests.
+
+Mettre les variables d'environnements dans un fichier.
+
+Puis executer `docker run --env-file <filename> -d -p 8000:8000 spleen85/oc-p13:latest`
+
+Et aller sur `http://localhost:8000`
