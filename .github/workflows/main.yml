@@ -56,9 +56,6 @@ jobs:
       RENDER_SERVICE_ID: ${{ secrets.RENDER_SERVICE_ID }}
       GIT_COMMIT: ${{ needs.build-push.outputs.sha }}
     steps:
-      - name: Déployer la nouvelle image sur Render
-        run: |
-          curl -X POST "https://api.render.com/deploy/srv-${RENDER_SERVICE_ID}?key=${RENDER_API_KEY}&imgURL=spleen85%2Foc-p13%3A${GIT_COMMIT}"
       - name: Update env vars on Render
         run: |
           curl -X PATCH "https://api.render.com/v1/services/${RENDER_SERVICE_ID}/env-vars" \
@@ -74,6 +71,6 @@ jobs:
                 }'
       - name: Trigger deployment on Render
         run: |
-          curl -X POST "https://api.render.com/deploy/srv-${RENDER_SERVICE_ID}" \
+          curl -X POST "https://api.render.com/deploy/srv-${RENDER_SERVICE_ID}?imgURL=spleen85%2Foc-p13%3A${GIT_COMMIT}" \
             -H "Accept: application/json" \
             -H "Authorization: Bearer ${RENDER_API_KEY}"
