@@ -32,6 +32,7 @@ jobs:
 
   build-push:
     needs: lint-test
+    if: github.ref_name == 'master'
     runs-on: ubuntu-latest
     outputs:
       sha: ${{ steps.vars.outputs.sha }}
