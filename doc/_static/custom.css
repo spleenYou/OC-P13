@@ -1,0 +1,8 @@
+.renku-content, .main-content, .wy-nav-content {
+    max-width: 100%;
+    width: 100%;
+}
+
+.wy-nav-content-wrap {
+    background-color: #343131;
+}

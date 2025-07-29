@@ -9,7 +9,7 @@
 project = 'OC Lettings'
 copyright = '2025, Anthony YOU'
 author = 'Anthony YOU'
-release = '1'
+release = '1.0.0'
 
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
@@ -24,5 +24,8 @@ language = 'fr'
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
-html_theme = 'alabaster'
 html_static_path = ['_static']
+html_theme = "renku"
+html_css_files = [
+    'custom.css',
+]

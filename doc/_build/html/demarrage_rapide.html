@@ -1,0 +1,213 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="fr" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Démarrage rapide &mdash; Documentation OC Lettings 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=09d77c1a" />
+      <link rel="stylesheet" type="text/css" href="_static/fonts.css?v=5583d106" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=09d77c1a" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=05dadb3a"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/translations.js?v=e6b791cb"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Recherche" href="search.html" />
+    <link rel="next" title="Technologies et langages" href="technologie_langage.html" />
+    <link rel="prev" title="Installation" href="installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            OC Lettings
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Rechercher docs" aria-label="Rechercher docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Sommaire</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Démarrage rapide</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requis">Pré-requis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sentry">Sentry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cle-secrete">Clé secrète</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#variables-d-environnement">Variables d’environnement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#lancement-du-projet">Lancement du projet</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="technologie_langage.html">Technologies et langages</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bdd.html">Base de données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="interface_programmation.html">Interface de programmation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="utilisation.html">Utilisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="deploiement_gestion.html">Déploiement et gestion</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">OC Lettings</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Démarrage rapide</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/demarrage_rapide.rst.txt" rel="nofollow"> Afficher la source de la page</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="demarrage-rapide">
+<h1>Démarrage rapide<a class="headerlink" href="#demarrage-rapide" title="Lien vers cette rubrique"></a></h1>
+<p>Avant le démarrage, il faut vérifier le pré-requis et configurer les variables d’environnement, sinon le projet ne fonctionnera pas.</p>
+<section id="pre-requis">
+<h2>Pré-requis<a class="headerlink" href="#pre-requis" title="Lien vers cette rubrique"></a></h2>
+<section id="sentry">
+<h3>Sentry<a class="headerlink" href="#sentry" title="Lien vers cette rubrique"></a></h3>
+<p>Le projet utilise <a class="reference external" href="https://sentry.io/">Sentry</a> pour le suivi des exceptions et des erreurs.</p>
+<p>Si vous n’avez pas créer de projet sur Sentry :</p>
+<ol class="arabic">
+<li><p>Aller sur <a class="reference external" href="https://sentry.io/">Sentry</a></p></li>
+<li><p>Créer un compte si besoin</p></li>
+<li><p>Cliquer sur “Créer un projet”</p></li>
+<li><p>Choisir les éléments suivants :</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Plateforme : Django</p></li>
+<li><p>Règler la fréquence des alertes selon vos préférences</p></li>
+<li><p>Donner un nom à votre projet</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Dans <cite>Configure SDK</cite>, copier le dsn indiqué (exemple: <a class="reference external" href="https://176...63e&#64;o450...732.ingest.de.sentry.io/450...160">https://176…63e&#64;o450…732.ingest.de.sentry.io/450…160</a>)</p></li>
+</ol>
+<p>le DSN est également dans les paramêtres du projet/SDK Setup/Clés clients(DSN).</p>
+</section>
+<section id="cle-secrete">
+<h3>Clé secrète<a class="headerlink" href="#cle-secrete" title="Lien vers cette rubrique"></a></h3>
+<p>Django utilise une clé secrète pour la signature cryptographique des données.</p>
+<p>Si vous n’avez pas définit de clé secrète, il est existe un <a class="reference external" href="https://djecrety.ir">générateur</a> pour cela</p>
+</section>
+</section>
+<section id="variables-d-environnement">
+<h2>Variables d’environnement<a class="headerlink" href="#variables-d-environnement" title="Lien vers cette rubrique"></a></h2>
+<p>Voici les variables d’environnement dont le projet à besoin :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Exemple</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SERVER_TYPE</p></td>
+<td><p>Définit le type de serveur</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEST</span></code> ou <code class="docutils literal notranslate"><span class="pre">PROD</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>HOSTS</p></td>
+<td><p>Adresses du serveur (PROD)</p></td>
+<td><p>localhost,127.0.0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>SECRET_KEY</p></td>
+<td><p>Clé utilisée par Django pour la cryptographie</p></td>
+<td><p>SuperCleSecrete123456789ABCDEF</p></td>
+</tr>
+<tr class="row-odd"><td><p>SENTRY_DSN</p></td>
+<td><p>DSN fourni par Sentry pour le suivi des logs</p></td>
+<td><p><a class="reference external" href="https://176...63e&#64;o450...732.ingest.de.sentry.io/450...160">https://176…63e&#64;o450…732.ingest.de.sentry.io/450…160</a></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lancement-du-projet">
+<h2>Lancement du projet<a class="headerlink" href="#lancement-du-projet" title="Lien vers cette rubrique"></a></h2>
+<ul>
+<li><p>Si vous utilisez le répertoire Github, ouvrez le terminal (s’assurer d’être dans l’environnement virtuel) et rentrez les variables d’environnement :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">SERVER_TYPE=TEST</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">HOSTS=localhost,127.0.0.1</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">SECRET_KEY=SuperCleSecrete12345</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">export</span> <span class="pre">SENTRY_DSN=https://176...63e&#64;o450...732.ingest.de.sentry.io/450...160</span></code></p></li>
+</ul>
+<p>Puis lancer le projet : <code class="docutils literal notranslate"><span class="pre">python</span> <span class="pre">manage.py</span> <span class="pre">runserver</span></code></p>
+</div></blockquote>
+</li>
+<li><p>Si vous utilisez l’image Docker :</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>soit vous mettez les variables dans un fichier (ex: .env) et vous entrer <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">--env-file</span> <span class="pre">.env</span> <span class="pre">-d</span> <span class="pre">-p</span> <span class="pre">8000:8000</span> <span class="pre">spleen85/oc-p13:latest</span></code></p></li>
+<li><p>soit vous entrer directement : <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">run</span> <span class="pre">-e</span> <span class="pre">SERVER_TYPE=TEST</span> <span class="pre">-e</span> <span class="pre">HOSTS=localhost,127.0.0.1</span> <span class="pre">-e</span> <span class="pre">SECRET_KEY=SuperCleSecrete12345</span> <span class="pre">-e</span> <span class="pre">SENTRY_DSN=https://176...63e&#64;o450...732.ingest.de.sentry.io/450...160</span> <span class="pre">-d</span> <span class="pre">-p</span> <span class="pre">8000:8000</span> <span class="pre">spleen85/oc-p13:latest</span></code></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+<p>Le projet est accessible à l’adresse <a class="reference external" href="http://localhost:8000/">http://localhost:8000/</a></p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
+        <a href="installation.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="technologie_langage.html" class="btn btn-neutral float-right" title="Technologies et langages" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Droits d'auteur 2025, Anthony YOU.</p>
+  </div>
+
+  Compilé avec <a href="https://www.sphinx-doc.org/">Sphinx</a> en utilisant un
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">thème</a>
+    fourni par <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
