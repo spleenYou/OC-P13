@@ -26,8 +26,7 @@ L’un des principaux atouts de SQLite3 est sa simplicité d’utilisation et sa
 
 2. **Via l'interface d'administration de Django :** Django fournit une interface d'administration conviviale qui permet de gérer facilement les données de l'application. Vous pouvez accéder à cette interface en démarrant le serveur de développement Django et en vous rendant sur la page d'administration dans votre navigateur web a l'adresse (http://127.0.0.1:8000/admin/). À partir de là, vous pouvez ajouter, modifier ou supprimer des données, et effectuer diverses opérations de gestion de la base de données.
 
-Utilisation de SQLite3 |sqlite3-logo|
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+**Utilisation de SQLite3** |sqlite3-logo|
 
 - Démarrer sqlite3 :
 
