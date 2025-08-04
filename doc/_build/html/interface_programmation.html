@@ -24,7 +24,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Recherche" href="search.html" />
     <link rel="next" title="Utilisation" href="utilisation.html" />
-    <link rel="prev" title="Base de données" href="bdd.html" /> 
+    <link rel="prev" title="Base de données et modèles" href="bdd.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -51,8 +51,16 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demarrage_rapide.html">Démarrage rapide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="technologie_langage.html">Technologies et langages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bdd.html">Base de données</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Interface de programmation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bdd.html">Base de données et modèles</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Interface de programmation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#lettings">Lettings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adresses">Adresses</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Lettings</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#profiles">Profiles</a></li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="utilisation.html">Utilisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="deploiement_gestion.html">Déploiement et gestion</a></li>
 </ul>
@@ -83,13 +91,44 @@
              
   <section id="interface-de-programmation">
 <h1>Interface de programmation<a class="headerlink" href="#interface-de-programmation" title="Lien vers cette rubrique"></a></h1>
+<p>Le projet ne permet pour le moment qu’une gestion via l’interface administrative de Django.</p>
+<a class="reference internal image-reference" href="_images/admin-login.png"><img alt="page login admin" src="_images/admin-login.png" style="width: 420px;" />
+</a>
+<p>Le login est <em>admin</em> et le mot de passe <em>Abc1234!</em> il est fortement conseillé de le modifier en cas d’utilisation en production.</p>
+<a class="reference internal image-reference" href="_images/admin-logged.png"><img alt="page admin logged" src="_images/admin-logged.png" style="width: 820px;" />
+</a>
+<p>On voit deux sections <em>Lettings</em> et <em>Profiles</em> qui permettent la gestion des informations qui leur correspondent.</p>
+<section id="lettings">
+<h2>Lettings<a class="headerlink" href="#lettings" title="Lien vers cette rubrique"></a></h2>
+<p>Affiche la liste des locations présentent sur le site. Une location est l’association d’un titre et d’une adresse.</p>
+<a class="reference internal image-reference" href="_images/admin-lettings.png"><img alt="page admin Lettings" src="_images/admin-lettings.png" style="width: 600px;" />
+</a>
+<section id="adresses">
+<h3>Adresses<a class="headerlink" href="#adresses" title="Lien vers cette rubrique"></a></h3>
+<p>Permet la gestion des adresses présentes sur le site.</p>
+<a class="reference internal image-reference" href="_images/admin-lettings-adresses.png"><img alt="page gestion adresses de location" src="_images/admin-lettings-adresses.png" style="width: 500px;" />
+</a>
+</section>
+<section id="id1">
+<h3>Lettings<a class="headerlink" href="#id1" title="Lien vers cette rubrique"></a></h3>
+<p>Permet la gestion des locations et de donner un nom aux adresses.</p>
+<a class="reference internal image-reference" href="_images/admin-lettings-lettings.png"><img alt="page gestion des locations" src="_images/admin-lettings-lettings.png" style="width: 500px;" />
+</a>
+</section>
+</section>
+<section id="profiles">
+<h2>Profiles<a class="headerlink" href="#profiles" title="Lien vers cette rubrique"></a></h2>
+<p>Permet la gestion des profiles présents sur le site internet.</p>
+<a class="reference internal image-reference" href="_images/admin-profiles.png"><img alt="page gestion des locations" src="_images/admin-profiles.png" style="width: 500px;" />
+</a>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pied de page">
-        <a href="bdd.html" class="btn btn-neutral float-left" title="Base de données" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
+        <a href="bdd.html" class="btn btn-neutral float-left" title="Base de données et modèles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Précédent</a>
         <a href="utilisation.html" class="btn btn-neutral float-right" title="Utilisation" accesskey="n" rel="next">Suivant <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

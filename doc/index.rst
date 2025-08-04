@@ -13,7 +13,7 @@ Cette documentation a été rédigée afin de comprendre le code derrière le si
 
 Ce site web est conçu pour une start-up proposant des locations immobilières.
 
-Orange Country Lettings connaît une croissance rapide aux États-Unis, n'hésitez pas à vous `lancer <URL1_>`__ et commencez à rechercher votre future location !
+Orange Country Lettings connaît une croissance rapide aux États-Unis, n'hésitez pas à vous `lancer <URL1_>`_ et commencez à rechercher votre future location !
 
 .. _URL1: https://oc-p13-bny4.onrender.com/
 

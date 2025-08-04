@@ -50,10 +50,20 @@
 <li class="toctree-l1"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="demarrage_rapide.html">Démarrage rapide</a></li>
 <li class="toctree-l1"><a class="reference internal" href="technologie_langage.html">Technologies et langages</a></li>
-<li class="toctree-l1"><a class="reference internal" href="bdd.html">Base de données</a></li>
+<li class="toctree-l1"><a class="reference internal" href="bdd.html">Base de données et modèles</a></li>
 <li class="toctree-l1"><a class="reference internal" href="interface_programmation.html">Interface de programmation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="utilisation.html">Utilisation</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Déploiement et gestion</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Déploiement et gestion</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#pre-requis">Pré-requis</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sentry">Sentry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cle-secrete">Clé secrète</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#variables-d-environnement">Variables d’environnement</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-github-actions">Workflow Github Actions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#supervision">Supervision</a></li>
+</ul>
+</li>
 </ul>
 
         </div>
@@ -82,6 +92,88 @@
              
   <section id="deploiement-et-gestion">
 <h1>Déploiement et gestion<a class="headerlink" href="#deploiement-et-gestion" title="Lien vers cette rubrique"></a></h1>
+<p>Le déploiement du projet se déclenche automatiquement à partir d’une modification du projet sur Github via un workflow Github Actions.</p>
+<p>Seul la première étape sera exécutée sur toutes les branches, les deux autres ne le seront que sur la branche “master”.</p>
+<p>Ce workflow va effectuer trois étapes (test, build et deploy) permettant de s’assurer que le code est suffisamment fonctionnel pour créer une image sur le hub <a class="reference external" href="https://www.docker.com">Docker</a> et la déployer sur <a class="reference external" href="https://render.com/">Render</a>.</p>
+<section id="pre-requis">
+<h2>Pré-requis<a class="headerlink" href="#pre-requis" title="Lien vers cette rubrique"></a></h2>
+<p>Afin de fonctionner correctement, certains éléments sont obligatoires afin de préparer un environnement et ses variables pour le projet.</p>
+<section id="sentry">
+<h3>Sentry<a class="headerlink" href="#sentry" title="Lien vers cette rubrique"></a></h3>
+<p>Le projet utilise <a class="reference external" href="https://sentry.io/">Sentry</a> pour le suivi des exceptions et des erreurs.</p>
+<p>Si vous n’avez pas créer de projet sur Sentry :</p>
+<ol class="arabic">
+<li><p>Aller sur <a class="reference external" href="https://sentry.io/">Sentry</a></p></li>
+<li><p>Créer un compte si besoin</p></li>
+<li><p>Cliquer sur “Créer un projet”</p></li>
+<li><p>Choisir les éléments suivants :</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Plateforme : Django</p></li>
+<li><p>Règler la fréquence des alertes selon vos préférences</p></li>
+<li><p>Donner un nom à votre projet</p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>Dans <cite>Configure SDK</cite>, copier le dsn indiqué (exemple: <a class="reference external" href="https://176...63e&#64;o450...732.ingest.de.sentry.io/450...160">https://176…63e&#64;o450…732.ingest.de.sentry.io/450…160</a>)</p></li>
+</ol>
+<p>le DSN est également dans les paramêtres du projet/SDK Setup/Clés clients(DSN).</p>
+</section>
+<section id="cle-secrete">
+<h3>Clé secrète<a class="headerlink" href="#cle-secrete" title="Lien vers cette rubrique"></a></h3>
+<p>Django utilise une clé secrète pour la signature cryptographique des données.</p>
+<p>Si vous n’avez pas définit de clé secrète, il est existe un <a class="reference external" href="https://djecrety.ir">générateur</a> pour cela</p>
+</section>
+</section>
+<section id="variables-d-environnement">
+<h2>Variables d’environnement<a class="headerlink" href="#variables-d-environnement" title="Lien vers cette rubrique"></a></h2>
+<p>Voici les variables d’environnement dont le projet à besoin :</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Exemple</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>SERVER_TYPE</p></td>
+<td><p>Définit le type de serveur</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">TEST</span></code> ou <code class="docutils literal notranslate"><span class="pre">PROD</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>HOSTS</p></td>
+<td><p>Adresses du serveur (PROD)</p></td>
+<td><p>localhost,127.0.0.1</p></td>
+</tr>
+<tr class="row-even"><td><p>SECRET_KEY</p></td>
+<td><p>Clé utilisée par Django pour la cryptographie</p></td>
+<td><p>SuperCleSecrete123456789ABCDEF</p></td>
+</tr>
+<tr class="row-odd"><td><p>SENTRY_DSN</p></td>
+<td><p>DSN fourni par Sentry pour le suivi des logs</p></td>
+<td><p><a class="reference external" href="https://176...63e&#64;o450...732.ingest.de.sentry.io/450...160">https://176…63e&#64;o450…732.ingest.de.sentry.io/450…160</a></p></td>
+</tr>
+</tbody>
+</table>
+<p>Ces variables d’environnement doivent être configurées dans Github (<em>projet</em> &gt; <em>Settings</em> &gt; <em>Security</em> &gt; <em>Secrets and variables</em> &gt; <em>Actions</em>&gt;*Repository secrets*)</p>
+<a class="reference internal image-reference" href="_images/variable-github.png"><img alt="variables github" src="_images/variable-github.png" style="width: 800px;" />
+</a>
+</section>
+<section id="workflow-github-actions">
+<h2>Workflow Github Actions<a class="headerlink" href="#workflow-github-actions" title="Lien vers cette rubrique"></a></h2>
+<p>Afin qu’un workflow GitHub Actions, le projet a un fichier <em>main.yaml</em> dans <em>.github/workflows</em></p>
+<p>Le workflow du projet se décompose en trois étapes, chaque étapes dépend de la réussite de celle d’avant :</p>
+<ol class="arabic simple">
+<li><p>Test et linting : Github va créer un environnement pour vérifier le linting du code et effectuer les tests définis dans les fichiers <em>tests.py</em> et s’assurer de tester au minimum 80% du code.</p></li>
+<li><p>Compiler et envoyer : Github va créer deux images Docker (une avec le tag <em>git_commit</em> et une avec le tag <em>latest</em> pour le déploiement) et les poussent sur le hub Docker.</p></li>
+<li><p>Déploiement : Gihtub va mettre à jour les variables d’environnements nécessaires pour le fonctionnement du projet et demande à Render d’aller chercher la dernière image Docker (<em>latest</em>).</p></li>
+</ol>
+</section>
+<section id="supervision">
+<h2>Supervision<a class="headerlink" href="#supervision" title="Lien vers cette rubrique"></a></h2>
+<p>Afin de s’assurer du bon fonctionnement du projet, Sentry récupère les erreurs générées afin que nous puissions suivre et améliorer le projet.</p>
+<a class="reference internal image-reference" href="_images/sentry-exemple.png"><img alt="sentry exemple" src="_images/sentry-exemple.png" style="width: 800px;" />
+</a>
+</section>
 </section>
 
 

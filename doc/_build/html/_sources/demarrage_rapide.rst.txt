@@ -9,13 +9,13 @@ Pré-requis
 Sentry
 ~~~~~~
 
-Le projet utilise `Sentry <URL_Sentry_>`__ pour le suivi des exceptions et des erreurs.
+Le projet utilise `Sentry <URL_Sentry_>`_ pour le suivi des exceptions et des erreurs.
 
 .. _URL_Sentry: https://sentry.io/
 
 Si vous n'avez pas créer de projet sur Sentry :
 
-#. Aller sur `Sentry <URL_Sentry_>`__
+#. Aller sur `Sentry <URL_Sentry_>`_
 #. Créer un compte si besoin
 #. Cliquer sur 'Créer un projet'
 #. Choisir les éléments suivants :
@@ -32,7 +32,7 @@ Clé secrète
 
 Django utilise une clé secrète pour la signature cryptographique des données.
 
-Si vous n'avez pas définit de clé secrète, il est existe un `générateur <URL_DJECRETY_>`__ pour cela
+Si vous n'avez pas définit de clé secrète, il est existe un `générateur <URL_DJECRETY_>`_ pour cela
 
 .. _URL_DJECRETY: https://djecrety.ir
 

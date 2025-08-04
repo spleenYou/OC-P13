@@ -18,9 +18,9 @@ Via Gihub
 Via Docker
 ----------
 
-#. Aller sur `Docker <URL_Docker_>`__
+#. Aller sur `Docker <URL_Docker_>`_
 #. Créer un compte si besoin
-#. Installer `Docker Desktop <URL_Docker_Desktop_>`__ selon votre système d'exploitation
+#. Installer `Docker Desktop <URL_Docker_Desktop_>`_ selon votre système d'exploitation
 #. Vérifier que Docker Desktop est lancé
 #. Ouvrir un terminal
 #. Récupérer l'image ``docker pull spleen85/oc-p13:latest``
