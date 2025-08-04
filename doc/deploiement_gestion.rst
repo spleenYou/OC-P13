@@ -79,7 +79,7 @@ Le workflow du projet se décompose en trois étapes, chaque étapes dépend de 
 Supervision
 -----------
 
-Afin de s'assurer du bon fonctionnement du projet, Sentry récupère les erreurs générées afin que nous puissions suivre et améliorer le projet.
+Afin de s'assurer du bon fonctionnement du projet, Sentry récupère les erreurs générées afin de pouvoir suivre et améliorer le projet en cas de bug.
 
 .. image:: _static/sentry-exemple.png
     :alt: sentry exemple
